@@ -1,19 +1,11 @@
 TUTORIAL:
 
-# _ #
-## _ ##
-### _ ###
+## Quick Start
 
-Roadmap for v1:
-instrument classification ("string: 95%")
---> setup.sh!
+Get up and running with a single command:
 
-
-torch
-torchaudio
-transformers
-numpy
-huggingface_hub
+```bash
+curl -sSL https://github.com/hideosnes/schmiede25-listening/raw/main/scripts/setup.sh | bash
 
 
 TODO:
