@@ -5,7 +5,7 @@ TUTORIAL:
 Get up and running with a single command:
 
 ```bash
-curl -sSL https://github.com/hideosnes/schmiede25-listening/raw/main/scripts/setup.sh | bash
+curl -sSL https://github.com/hideosnes/schmiede25-listening.git setup.sh | bash
 
 
 TODO:

@@ -34,7 +34,7 @@ def build_cli(processes_map: Dict[str, object]) -> argparse.Namespace:
     subparsers = parser.add_subparsers(dest="process")
 
     for name, module in processes_map.items():
-        sp = subparsers.add_parser(name, help=getattr(module, "DESCRIPTIOM", None))
+        sp = subparsers.add_parser(name, help=getattr(module, "DESCRIPTION", None))
         module.add_arguments(sp)
 
     args = parser.parse_args()

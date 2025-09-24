@@ -5,3 +5,4 @@ huggingface-hub
 numpy
 soundfile
 librosa
+pyaudio
