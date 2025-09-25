@@ -4,19 +4,10 @@
 
 
 ## Quick Start
-### 1. Activate your environment
 conda activate schmiede25
-
-### 2. List available microphones
-python app.py microphone_manager --list
-
-### 3. Test your microphone
-python app.py microphone_manager --test 0
-
-### 4. Run live instrument detection
 python app.py instrument_detector --live
 
-# 5. For musicians: OSC output is automatically enabled in live mode
+# OSC output is automatically enabled in live mode
 # Receives data on localhost:9000 with addresses:
 # /instrument/top1, /instrument/top2, /instrument/top3
 # /instrument/labels, /instrument/scores
@@ -26,13 +17,11 @@ python app.py instrument_detector --live
 https://docs.conda.io/en/latest/miniconda.html
 
 ### Create conda environment
-conda create -n schmiede25 python=3.10
-conda activate schmiede25
+conda create -n myCondaName python=3.10
+conda activate myCondaName
 
 ### Install scientific packages via conda (pre-compiled binaries)
 conda install scipy librosa numpy
-
-### Install remaining packages via pip
 pip install torch torchaudio transformers huggingface-hub soundfile
 brew install portaudio
 pip install pyaudio
