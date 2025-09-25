@@ -10,6 +10,10 @@ run(args)
 """
 
 import os
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+os.environ["NUMEXPR_NUM_THREADS"] = "1"
+
 import argparse
 from pathlib import Path
 import time
@@ -93,7 +97,9 @@ class LiveAudioClassifier:
         start_time = time.time()
 
         import torch
+        print(f"PyTorch OpenMP: {torch.get_num_threads()} threads")
         import numpy as np
+        print(f"NumPy BLAS info: {np.show_config()}")
 
         # converting to torch tensor (if needed)
         if isinstance(audio_data, np.ndarray):
