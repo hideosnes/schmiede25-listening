@@ -53,16 +53,16 @@ class SimpleOSCServer:
                 self.sock.sendto(osc_msg, (OSC_HOST, OSC_PORT))
 
             # send as one (pewpew <3)
-            all_labels = [pred[0] for pred in self.latest_predictions]
-            all_scores = [pred[1] for pred in self.latest_predictions]
+            # all_labels = [pred[0] for pred in self.latest_predictions]
+            # all_scores = [pred[1] for pred in self.latest_predictions]
 
-            labels_msg = self.create_osc_message("/instrument/labels", all_labels)
-            scores_msg = self.create_osc_message("/instrument/scores", all_scores)
+            # labels_msg = self.create_osc_message("/instrument/labels", all_labels)
+            # scores_msg = self.create_osc_message("/instrument/scores", all_scores)
 
-            self.sock.sendto(labels_msg, (OSC_HOST, OSC_PORT))
-            self.sock.sendto(scores_msg, (OSC_HOST, OSC_PORT))
+            # self.sock.sendto(labels_msg, (OSC_HOST, OSC_PORT))
+            # self.sock.sendto(scores_msg, (OSC_HOST, OSC_PORT))
 
-            self.message_count += 5
+            self.message_count += 3
             import datetime
             self.last_send_time = datetime.datetime.now().strftime("%H:%M:%S")
         except Exception as e:
@@ -79,8 +79,8 @@ class SimpleOSCServer:
         print(f"OSC server blindly blasting to {OSC_HOST}:{OSC_PORT} every {self.update_interval}s")
         print("OSC Addresses:")
         print(" - /instrument/top1, /instrument/top2, /instrument/top3 -> [label, score]")
-        print(" - /instrument/labels -> [label1, label2, label3]")
-        print(" - /instrument/scores -> [score1, score2, score3]")
+        # print(" - /instrument/labels -> [label1, label2, label3]")
+        # print(" - /instrument/scores -> [score1, score2, score3]")
 
         while self.running:
             self.send_predictions()
@@ -143,7 +143,9 @@ if __name__ == "__main__":
         test_predictions = [
             ("guitar", 0.85),
             ("piano", 0.12),
-            ("drums", 0.03)
+            ("drums", 0.03),
+            ("strings", 0.23),
+            ("speech", 0.36)
         ]
         osc.update_predictions(test_predictions)
 

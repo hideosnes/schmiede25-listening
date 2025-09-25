@@ -79,6 +79,10 @@ python app.py instrument_detector --file audio.wav --topk 10
 ## Force download fresh model from HuggingFace
 python app.py instrument_detector --from-hub --live
 
+## EXAMPLE: ##
+python app.py instrument_detector --hub-name "MIT/ast-finetuned-audioset-10-10-0.4593" --live
+python app.py instrument_detector --hub-name "audeering/wav2vec2-large-robust-12-ft-emotion-msp-dim" --live
+
 TODO:
 
 # RAVE #
@@ -87,4 +91,18 @@ RAVE (Realtime Audio Variational autoEncoder) learns an encoder which extracts c
 
 # MIDI #
 ## https://huggingface.co/santifiorino/SAO-Instrumental-Finetune ##
-Create a MoE subset to generate organized midi-data-packages. These can be used to control e.g. hardware or software that expects MIDI inputs. 
+Create a MoE subset to generate organized midi-data-packages. These can be used to control e.g. hardware or software that expects MIDI inputs.
+
+# Other audio Models #
+"MIT/ast-finetuned-audioset-10-10-0.4593" # Recognizes 527+ audio classes
+"facebook/wav2vec2-large-xlsr-53-german"   # Different domain but more classes
+
+# Models that recognize brass, woodwinds, strings, percussion, vocals, etc.
+"facebook/hubert-large-ls960-ft"
+"microsoft/unispeech-sat-base-plus"
+
+
+# Model Cascade #
+First model: Is this an instrument? (binary)
+Second model: Which instrument family? (strings/brass/percussion/etc.)
+Third model: Specific instrument within family

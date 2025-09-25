@@ -24,7 +24,7 @@ from . import osc_manager
 NAME = "instrument_detector"
 DESCRIPTION = "classify an audio file using an audio classification en- & decoder (or model if .yml available)"
 
-DEFAULT_MODEL_NAME = "dima806/musical_instrument_detection"
+DEFAULT_MODEL_NAME = "MIT/ast-finetuned-audioset-10-10-0.4593"
 MODEL_DIR = Path("models") / DEFAULT_MODEL_NAME.split("/")[-1]
 DEFAULT_TEST_WAV = Path("test_wav") / "test.wav"
 
@@ -97,9 +97,7 @@ class LiveAudioClassifier:
         start_time = time.time()
 
         import torch
-        print(f"PyTorch OpenMP: {torch.get_num_threads()} threads")
         import numpy as np
-        print(f"NumPy BLAS info: {np.show_config()}")
 
         # converting to torch tensor (if needed)
         if isinstance(audio_data, np.ndarray):
