@@ -15,6 +15,7 @@ from pathlib import Path
 import time
 import threading
 import queue
+from . import osc_manager
 
 NAME = "instrument_detector"
 DESCRIPTION = "classify an audio file using an audio classification en- & decoder (or model if .yml available)"
@@ -196,6 +197,9 @@ class LiveAudioClassifier:
 
                 self.prediction_queue.put((predictions, timing_info))
 
+                if hasattr(self, 'osc_enabled') and self.osc_enabled:
+                    osc_manager.update_osc_predictions(predictions)
+
             except queue.Empty:
                 continue
 
@@ -260,6 +264,17 @@ def create_live_gui(classifier, chunk_duration=1.0):
     timing_label = tk.Label(root, textvariable=timing_var, font=('Arial', 10), bg='#2b2b2b', fg='#888888')
     timing_label.pack(pady=5)
 
+    osc_frame = tk.Frame(root, bg='#2b2b2b')
+    osc_frame.pack(pady=5, padx=20, fill='x')
+
+    osc_status_var = tk.StringVar(value="OSC: localhost:9000")
+    osc_status_label = tk.Label(osc_frame, textvariable=osc_status_var, font=('Arial', 10, 'bold'), bg='#2b2b2b', fg='#00ff00')
+    osc_status_label.pack(side='left')
+
+    osc_counter_var = tk.StringVar(value="Sent: 0")
+    osc_counter_label = tk.Label(osc_frame, textvariable=osc_counter_var, font=('Arial', 10), bg='#2b2b2b', fg='#ffaa00')
+    osc_counter_label.pack(side='right')
+
     button_frame = tk.Frame(root, bg='#2b2b2b')
     button_frame.pack(pady=10)
 
@@ -300,6 +315,16 @@ def create_live_gui(classifier, chunk_duration=1.0):
             inference_ms = timing_info['inference_time'] * 1000
             timing_var.set(f"Inference: {inference_ms:.0f}ms | Total: {total_ms:.0f}ms")
 
+            if hasattr(classifier, 'osc_enabled') and classifier.osc_enabled:
+                osc_info = osc_manager.get_osc_status()
+                if osc_info:
+                    osc_status_var.set(f"OSC: {osc_info['host']}:{osc_info['port']}")
+                    osc_counter_var.set(f"Sent: {osc_info['message_count']} | Last: {osc_info['last_send']}")
+                else:
+                    osc_status_var.set("OSC: ERROR")
+            else:
+                osc_status_var.set("OSC: Disabled")
+
         except queue.Empty:
             pass
 
@@ -333,13 +358,18 @@ def run(args):
         print(f"Loading model...")
         try:
             feature_extractor = AutoFeatureExtractor.from_pretrained(str(model_path))
-            model =  AutoModelForAudioClassification.from_pretrained(str(model_path))
+            model = AutoModelForAudioClassification.from_pretrained(str(model_path))
         except Exception as e:
             raise RuntimeError(f"Could not load model from {model_path}. Error: {e}") from e
 
         model.eval()
         id2label = getattr(model.config, "id2label", {}) or {}
         classifier = LiveAudioClassifier(model, feature_extractor, id2label, args.sample_rate)
+
+        osc_manager.start_osc_server(args.chunk)
+        classifier.osc_enabled = True
+        print(f"OSC server started - spamming localhost:9000 every {args.chunk}s for 'bussi aufs bauchi'")
+
         gui = create_live_gui(classifier, args.chunk)
 
         print("Starting live mode GUI for se Schmiede moopsies...")
@@ -347,6 +377,7 @@ def run(args):
 
         #Cleanup
         classifier.stop_live_classification()
+        osc_manager.stop_osc_server()
         return
 
     try:    
