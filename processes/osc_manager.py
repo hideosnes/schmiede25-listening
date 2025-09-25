@@ -143,9 +143,7 @@ if __name__ == "__main__":
         test_predictions = [
             ("guitar", 0.85),
             ("piano", 0.12),
-            ("drums", 0.03),
-            ("strings", 0.23),
-            ("speech", 0.36)
+            ("drums", 0.03)
         ]
         osc.update_predictions(test_predictions)
 
