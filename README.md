@@ -93,7 +93,7 @@ Sends three messages per chunk (top-3 predictions):
 ### Step 1:
 `bash scripts/setup.sh`
 
-# On Linux (if needed)
+### On Linux (if needed)
 `sudo apt-get install portaudio19-dev`
 `pip install pyaudio`
 
