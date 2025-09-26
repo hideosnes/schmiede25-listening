@@ -65,11 +65,13 @@ Also ensure microphone permissions are enabled in System Settings.
 ### Quick Start (macOS)
 
 `conda activate schmiede25`
+
 `python app.py instrument_detector --live`
 
 ### Quick Start (Other Systems)
 
 `source venv/bin/activate` # Or your preferred virtual env manager
+
 `python app.py instrument_detector --live`
 
 ---
