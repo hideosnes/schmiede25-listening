@@ -117,21 +117,17 @@ Sends three messages per chunk (top-3 predictions):
 
 `pip install torch torchaudio transformers huggingface-hub soundfile`
 
-### Step 5: Install pyaudio (Recommended via Homebrew)
+### Step 5: Install pyaudio on macOS
 
-# Install Homebrew first:
-`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-
-# Then install portaudio and pyaudio
-`brew install portaudio`
-
-`pip install pyaudio`
+- Install Homebrew first: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+- Then install portaudio: `brew install portaudio`
+- And finally pyaudio: `pip install pyaudio`
 
 ### Step 6: Install Project Dependencies
 
 `pip install -r requirements.txt`
 
-> If you encounter issues installing `torch` on macOS, refer to [PyTorch official docs](https://pytorch.org). Contacting Apple support would be an alternative option. 😅
+> If you encounter issues installing `torch` on macOS refer to [PyTorch official docs](https://pytorch.org). Contacting Apple support would be an alternative option. 😅
 
 ---
 
