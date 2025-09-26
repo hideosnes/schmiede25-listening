@@ -38,11 +38,11 @@ On macOS, we **strongly recommend** using `conda` and installing `portaudio` via
 ### Audio Issues
 
 **Linux:**
-`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-
 `sudo apt install portaudio19-dev python3-dev python3-tk`
 
 **macOS:**
+`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+
 `xcode-select --install`
 
 Also ensure microphone permissions are enabled in System Settings.
