@@ -58,7 +58,7 @@ pip install torch torchaudio transformers huggingface-hub soundfile
 If you are a masochist, go ahead and install pyaudio directly. Alternatively, it is strongly recommended to use Homebrew[https://brew.sh]
 brew install portaudio
 - after that -
-pip install pyaudio
+- pip install pyaudio
 
 pip install -r requirements.txt
 
