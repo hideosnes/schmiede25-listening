@@ -1,7 +1,7 @@
 # Real-time Audio Classification
 
 **Version:** v0.0.3 (alpha release)  
-**Contributions:** Welcome! Please mark AI-generated code as such in your commits.
+**Contributions:** Not unwelcome! Please mark AI-generated code as such in your commits.
 
 This application provides real-time audio classification using PyTorch-based transformer models from Hugging Face. The system captures live microphone input, processes it in configurable chunks (default: 1-second intervals), and runs inference to identify instruments or sounds. Results are displayed via a Tkinter GUI and automatically broadcast via OSC (Open Sound Control) to `localhost:9000` for integration with DAWs and music software.
 
@@ -209,7 +209,7 @@ python app.py instrument_detector --from-hub --live
 
 ---
 
-## 🧪 MODEL-ZOO
+## MODEL-ZOO
 
 Pre-trained models compatible with this pipeline:
 
@@ -229,9 +229,9 @@ python app.py instrument_detector \
 
 ---
 
-## 🗺 ROADMAP & TODOs
+## ROADMAP & TODOs
 
-### 🔁 RAVE Integration
+### RAVE Integration
 [RAVE](https://iil.is/news/ravemodels)  
 Check out the Hugging Face repo: [huggingface.co/Intelligent-Instruments-Lab/rave-models](https://huggingface.co/Intelligent-Instruments-Lab/rave-models)  
 
