@@ -83,9 +83,9 @@ OSC is **automatically enabled in live mode**, broadcasting to `localhost:9000`.
 ### Addresses & Schema
 Sends three messages per chunk (top-3 predictions):
 
-/instrument/top1 -> [str(label), float(score_clamped_0_to_1)]
-/instrument/top2 -> [str(label), float(score_clamped_0_to_1)]
-/instrument/top3 -> [str(label), float(score_clamped_0_to_1)]
+- /instrument/top1 -> [str(label), float(score_clamped_0_to_1)]
+- /instrument/top2 -> [str(label), float(score_clamped_0_to_1)]
+- /instrument/top3 -> [str(label), float(score_clamped_0_to_1)]
 
 > Note: OSC sends raw ASCII strings — decode appropriately in your receiving app.
 
@@ -97,15 +97,13 @@ Sends three messages per chunk (top-3 predictions):
 
 ### On Linux (if needed)
 `sudo apt-get install portaudio19-dev`
+
 `pip install pyaudio`
 
 ## Manual Installtion (macOS)
-### Step 1: Install Miniconda or Anaconda
+### Step 1: Install Miniforge (Conda-Forge)
 
-[Install Miniconda](https://docs.conda.io/en/latest/miniconda.html)
-
-Latest installers available at: anaconda.com/download  
-Archive of older versions: https://repo.anaconda.com/miniconda
+[Install Mini-Forge](https://github.com/conda-forge/miniforge)
 
 ### Step 2: Create Conda Environment
 
