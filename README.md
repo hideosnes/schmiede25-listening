@@ -108,6 +108,7 @@ Sends three messages per chunk (top-3 predictions):
 ### Step 2: Create Conda Environment
 
 `conda create -n myCondaName python=3.10`
+
 `conda activate myCondaName`
 
 ### Step 3: Install Scientific Packages (via Conda)
@@ -125,6 +126,7 @@ Sends three messages per chunk (top-3 predictions):
 
 # Then install portaudio and pyaudio
 `brew install portaudio`
+
 `pip install pyaudio`
 
 ### Step 6: Install Project Dependencies
@@ -138,7 +140,9 @@ Sends three messages per chunk (top-3 predictions):
 ## Clone and Run
 
 `git clone https://github.com/hideosnes/schmiede25-listening.git`
+
 `cd schmiede25-listening`
+
 `python app.py --list`
 
 ---
